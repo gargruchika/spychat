@@ -1,9 +1,12 @@
-#first module
+#first module(starting of project)
 from spy_detail import spy,spy1,chatmessage, friends
 from steganography.steganography import Steganography
 from datetime import datetime
+from termcolor import colored
+
 #add status messages
 status_message=['my name is ruchika.',"what's up",'bring me back.','walk with faith.']
+
 print"Hello"
 print"Let's get started."
 
@@ -14,7 +17,7 @@ existing=str(raw_input(question))
 
 def add_status():
 
-    updated_status_message = None
+    updated_status_message = None                                                 #add_status function which is used to add new status or use older status.
 
 
     if spy.current_status_message != None:
@@ -58,10 +61,10 @@ def add_status():
     return updated_status_message
 
 def add_friend():
-    new_friend = spy1('', '', 0, 0.0)
+    new_friend = spy1('','',0,0.0)
 
     new_friend.name = raw_input("Please add your friend's name: ")
-    new_friend.salutation = raw_input("Are they Mr. or Ms.?: ")
+    new_friend.salutation = raw_input("Are they Mr. or Ms.?: ")                                #add_friend function is used to add another new friends in chat.
 
     new_friend.name = new_friend.salutation + " " + new_friend.name
 
@@ -71,7 +74,7 @@ def add_friend():
     new_friend.rating = raw_input("Spy rating?")
     new_friend.rating = float(new_friend.rating)
 
-    if len(new_friend.name) > 0 and new_friend.age > 18 and new_friend.rating >= spy.rating:
+    if len(new_friend.name) > 0 and new_friend.age > 12 and new_friend.rating >= spy.rating:
         friends.append(new_friend)
         print 'Friend Added!'
     else:
@@ -80,7 +83,7 @@ def add_friend():
     return len(friends)
 
 
-
+#select a friend whom with you want to chat.
 def select_a_friend():
     item_number = 0
 
@@ -100,7 +103,7 @@ def select_a_friend():
 def send_message():
     friend_choice = select_a_friend()
 
-    original_image = raw_input("What is the name of the image?")
+    original_image = raw_input("What is the name of the image?")                                 #send a secret messgae within a photo.
     output_path = "output.jpg"
     text = raw_input("What do you want to say? ")
     Steganography.encode(original_image, output_path, text)
@@ -111,7 +114,7 @@ def send_message():
 
     print "Your secret message image is ready!"
 
-
+#read a secret messgae.
 def read_message():
     sender = select_a_friend()
 
@@ -125,6 +128,8 @@ def read_message():
 
     print "Your secret message has been saved!"
 
+
+#history details
 def read_chat_history():
 
     read_for = select_a_friend()
@@ -133,9 +138,9 @@ def read_chat_history():
 
     for chat in friends[read_for].chats:
         if chat.sent_by_me:
-            print '[%s] %s: %s' % (chat.time.strftime("%d %B %Y"), 'You said:', chat.message)
+            print '[%s] %s: %s' %(colored(chat.time.strftime("%d %B %Y"),'blue'),colored(spy.name,'red'),chat.message)
         else:
-            print '[%s] %s said: %s' % (chat.time.strftime("%d %B %Y"), friends[read_for].name, chat.message)
+            print '[%s] %s said: %s' %(colored(chat.time.strftime("%d %B %Y"),'blue'),colored( friends[read_for].name,'red'), chat.message)
 
 
 #function declaration
@@ -144,9 +149,9 @@ def start_chat(spy):
 
     spy.name = spy.salutation + " " + spy.name
 
-    if spy.age > 18 and spy.age < 55:
+    if spy.age > 12 and spy.age < 50:
 
-        print "Authentication complete. Welcome  "  + spy.name +  "  age: " + str(spy.age) + "  Yeand rating of: " + str(
+        print "Authentication complete. Welcome  "  + spy.name +  "  age: " + str(spy.age) + "  and rating of: " + str(
             spy.rating) + " Proud to have you onboard."
 
         show_menu = True
