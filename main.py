@@ -5,9 +5,9 @@ from datetime import datetime
 from termcolor import colored
 
 #add status messages
-status_message=['my name is ruchika.',"what's up",'bring me back.','walk with faith.']
+status_message=['My name is Vasu.',"what's up",'bring me back.','walk with faith.']
 
-print"Hello"
+print"hi"
 print"Let's get started."
 
 #your choice to start app
