@@ -4,8 +4,8 @@ from steganography.steganography import Steganography
 from datetime import datetime
 from termcolor import colored
 
-#add status messages
-status_message=['My name is Vasu.',"what's up",'bring me back.','walk with faith.']
+#add status messageska
+status_message=['My name is Ruchi.',"what's up",'bring me back.','walk with faith.']
 
 print"hi"
 print"Let's get started."
@@ -101,30 +101,33 @@ def select_a_friend():
 
 
 def send_message():
-    friend_choice = select_a_friend()
 
-    original_image = raw_input("What is the name of the image?")                                 #send a secret messgae within a photo.
-    output_path = "output.jpg"
-    text = raw_input("What do you want to say? ")
-    Steganography.encode(original_image, output_path, text)
+     friend_choice = select_a_friend()
 
-    new_chat = chatmessage(text,True)
+     original_image = raw_input("What is the name of the image?")                                 #send a secret messgae within a photo.
+     output_path = "output.jpg"
+     text = raw_input("What do you want to say? ")
 
-    friends[friend_choice].chats.append(new_chat)
+     Steganography.encode(original_image, output_path, text)
+     new_chat = chatmessage(text,True)
 
-    print "Your secret message image is ready!"
+     friends[friend_choice].chats.append(new_chat)
+     print "Your secret message image is ready!"
+
+
+     print"please send some message."
 
 #read a secret messgae.
 def read_message():
     sender = select_a_friend()
 
     output_path = raw_input("What is the name of the file?")
-
     secret_text = Steganography.decode(output_path)
 
     new_chat = chatmessage(secret_text,False)
 
     friends[sender].chats.append(new_chat)
+
 
     print "Your secret message has been saved!"
 
@@ -195,6 +198,14 @@ else:
 
         spy.rating = raw_input("What is your spy rating?")
         spy.rating = float(spy.rating)
+        if(spy.rating)> 4.5:
+            print"you are great one."
+        elif(spy.rating)> 3.5and(spy.rating)<=4.5:
+            print"it's good."
+        elif(spy.rating)>2.5 and (spy.rating)<=3.5:
+            print"you are on right track."
+        else:
+            print"please enter valid rating."
 
         start_chat(spy)
     else:

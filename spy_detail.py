@@ -17,11 +17,11 @@ class chatmessage:
         self.time = datetime.now()
         self.sent_by_me = sent_by_me
 
-spy = spy1('Vasu', 'Mr.', 20, 4)
+spy = spy1('Ruchika', 'Mr.', 20, 4)
 
-friend_one = spy1('rohit', 'Mr.', 19,4.9)
-friend_two = spy1('Munisha', 'Ms.',19, 4.39)
-friend_three = spy1('shabbu', 'Ms.',20, 4.95)
+friend_one = spy1('Rashmi', 'Mr.', 19,4.9)
+friend_two = spy1('Munishha', 'Ms.',19, 4.39)
+friend_three = spy1('sunidhi', 'Ms.',20, 4.95)
 
 
 friends = [friend_one, friend_two, friend_three]
